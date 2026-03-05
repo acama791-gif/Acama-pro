@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 – Page Not Found | ACAMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0d0d0d;
+      --surface: #141414;
+      --accent: #c8a96e;
+      --accent-dim: rgba(200, 169, 110, 0.12);
+      --text: #f0ece4;
+      --muted: #6b6660;
+      --border: rgba(200, 169, 110, 0.2);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Subtle background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200, 169, 110, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 169, 110, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+    }
+
+    /* Ambient glow */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(ellipse, rgba(200, 169, 110, 0.06) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      max-width: 620px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Logo / Brand */
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3rem;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    /* Big 404 */
+    .error-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(7rem, 22vw, 13rem);
+      font-weight: 900;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--border);
+      letter-spacing: -0.02em;
+      position: relative;
+      animation: fadeUp 0.8s ease 0.15s both;
+    }
+
+    .error-number::after {
+      content: '404';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent) 0%, #a07840 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.18;
+    }
+
+    /* Divider line */
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--accent);
+      margin: 2rem auto;
+      opacity: 0.6;
+      animation: fadeUp 0.8s ease 0.25s both;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 400px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+
+    /* CTA Button */
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+      animation: fadeUp 0.8s ease 0.5s both;
+    }
+
+    .btn-home:hover {
+      background: var(--accent);
+      color: var(--bg);
+      transform: translateY(-2px);
+    }
+
+    .btn-home svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.2s;
+    }
+
+    .btn-home:hover svg {
+      transform: translateX(-3px);
+    }
+
+    /* Footer note */
+    .footer-note {
+      position: fixed;
+      bottom: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      opacity: 0.5;
+      animation: fadeUp 0.8s ease 0.7s both;
+    }
+
+    @media (max-width: 480px) {
+      .brand { margin-bottom: 2rem; }
+      .error-number { font-size: 7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="brand">ACAMA</div>
+
+    <div class="error-number">404</div>
+
+    <div class="divider"></div>
+
+    <h1>Page Not Found</h1>
+
+    <p>
+      The page you're looking for has moved, been removed, or doesn't exist.
+      Let's get you back on track.
+    </p>
+
+    <a href="https://www.acama.co.za" class="btn-home">
+      <!-- Arrow left icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="19 12 5 12"/>
+        <polyline points="12 5 5 12 12 19"/>
+      </svg>
+      Back to Home
+    </a>
+
+  </div>
+
+  <p class="footer-note">www.acama.co.za</p>
+
+</body>
+</html>
